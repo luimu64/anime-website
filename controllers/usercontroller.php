@@ -1,7 +1,7 @@
 <?php
 require_once "database/models/users.php";
 
-function adminController() {
+function loginController() {
     if(isset($_POST['username'], $_POST['password'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -16,7 +16,20 @@ function adminController() {
             require "views/adminlogin.view.php";
         }
     } else {
-        require "views/adminlogin.view.php";
+        require "views/login.view.php";
+    }
+}
+
+function registeringController() {
+    if(isset($_POST['username'], $_POST['password'], $_POST['sckey'])){
+        $pdo = connectDB();
+        $id = $_POST['id'];
+        deletePost($pdo, $id);
+        $allinfo = getAllPostsInfo($pdo);
+        $sorted = array_sort($allinfo, "likes");
+        require "views/adminfrontpage.view.php";
+    } else {
+        require "views/register.view.php";
     }
 }
 

@@ -35,6 +35,14 @@ $router->post('/smal', function($request) {
   adminController();
 });
 
+$router->get('/login', function($request) {
+  loginController();
+});
+
+$router->get('/register', function($request) {
+  registeringController();
+});
+
 $router->get('/logout', function($request) {
   logoutController();
 });

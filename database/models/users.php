@@ -15,6 +15,12 @@ function login($pdo, $username, $password){
         return false;
 }
 
+function checkKey($pdo, $sckey) {
+    $sql = "SELECT * FROM SMAL";
+    $stm = $pdo->query($sql);
+    $all = $stm->fetchAll(PDO::FETCH_ASSOC);
+    return in_array($sckey, $all);
+}
 
 function deletePost($pdo, $id) {
     $cleanid = cleanUpInput($id);

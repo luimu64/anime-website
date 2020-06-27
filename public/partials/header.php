@@ -30,7 +30,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link right-nav-item" href="/login">Login</a>
+                <a class="nav-link right-nav-item <?php if ($currentpage=="login") echo 'active'?>" href="/login">Login</a>
             </li>
         </ul>
     </div>
