@@ -1,0 +1,43 @@
+.navbar-brand {
+    width: 1.5em;
+}
+.navbar {
+    margin-right: 0em;
+    padding-right: 0em;
+}
+
+.bg-particles {
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1000;
+    background-image: url("../img/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.footerp {
+    position: absolute;
+    bottom: 0em;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    opacity: 50%;
+}
+
+body {
+    padding-top: 3.5em;
+    overflow-x: hidden;
+}
+
+
+.header1 {
+    color: white;
+}
+.right-nav-item {
+    margin-right: 1em;
+}
+
+.smal-title {
+    background-color: rgb(34, 89, 172);
+    color: white;
+}
