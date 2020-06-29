@@ -13,7 +13,7 @@ function loginController() {
             $_SESSION['session_id'] = session_id();
             header("Location: /"); 
         } else {
-            require "views/adminlogin.view.php";
+            require "views/login.view.php";
         }
     } else {
         require "views/login.view.php";
@@ -23,11 +23,17 @@ function loginController() {
 function registeringController() {
     if(isset($_POST['username'], $_POST['password'], $_POST['sckey'])){
         $pdo = connectDB();
-        $id = $_POST['id'];
-        deletePost($pdo, $id);
-        $allinfo = getAllPostsInfo($pdo);
-        $sorted = array_sort($allinfo, "likes");
-        require "views/adminfrontpage.view.php";
+        $username = $_POST['username'];
+        $password = $_POST['password']; 
+        $sckey = $_POST['sckey'];
+        if (checkScKey($pdo, $sckey)) {
+            addUser($pdo, $username, $password);
+            require "views/login.view.php";
+        } else {
+            echo "Incorrect secrect key!";
+            require "views/register.view.php";
+        }
+        
     } else {
         require "views/register.view.php";
     }

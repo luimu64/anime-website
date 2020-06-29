@@ -3,7 +3,7 @@
 
 function login($pdo, $username, $password){
     $cleanusername = cleanUpInput($username);
-    $sql = "SELECT * FROM admin WHERE username=?";
+    $sql = "SELECT * FROM users WHERE username=?";
     $stm= $pdo->prepare($sql);
     $stm->execute([$cleanusername]);
     $user = $stm->fetch(PDO::FETCH_ASSOC);
@@ -15,11 +15,27 @@ function login($pdo, $username, $password){
         return false;
 }
 
-function checkKey($pdo, $sckey) {
-    $sql = "SELECT * FROM SMAL";
+
+function addUser($pdo, $username, $password){
+    $cleanusername =  cleanUpInput($username);
+    $hashedpassword = hashPassword($password);
+    $data = [$cleanusername, $hashedpassword];
+    $sql = "INSERT INTO users (username, password) VALUES(?,?)";
+    $stm=$pdo->prepare($sql);
+    return ($stm->execute($data));
+}
+
+
+function checkScKey($pdo, $sckey) {
+    $sql = "SELECT sckey FROM registering_keys";
     $stm = $pdo->query($sql);
     $all = $stm->fetchAll(PDO::FETCH_ASSOC);
-    return in_array($sckey, $all);
+    if (in_array_r($sckey, $all)) {
+        $sql = "DELETE FROM registering_keys WHERE sckey = ?";
+        $stm= $pdo->prepare($sql);
+        $stm->execute([$sckey]);
+        return TRUE;
+    } else return FALSE;
 }
 
 function deletePost($pdo, $id) {

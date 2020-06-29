@@ -8,6 +8,13 @@ function indexController() {
     require "views/frontpage.view.php";
 }
 
+function loggedController() {
+    $pdo = connectDB();
+    $allinfo = getAllDownloadsInfo($pdo);
+    require "views/loggedfrontpage.view.php";
+}
+
+
 
 function upvoteController() {
     $pdo = connectDB();

@@ -39,5 +39,5 @@ else require "public/partials/header.php";
       </div>
     </div>
 <?php
-require "public/partials/footer.php";
+require "public/partials/loggedfooter.php";
 ?>

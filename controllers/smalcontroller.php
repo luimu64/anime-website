@@ -7,3 +7,5 @@ function smalController() {
     $allinfo = getAllSmalInfo($pdo);
     require "views/smal.view.php";
 }
+
+?>

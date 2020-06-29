@@ -41,3 +41,19 @@ body {
     background-color: rgb(34, 89, 172);
     color: white;
 }
+
+.post-input {
+    margin-top: 1em;
+    width: 90%;
+}
+
+a:hover {
+    color: white;
+}
+a {
+    color: grey;
+}
+
+.movie-container {
+    margin-top: 1em;
+}

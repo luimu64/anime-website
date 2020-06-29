@@ -1,6 +1,7 @@
 <?php
 $currentpage = "smal";
-require "public/partials/header.php";
+if(isLoggedIn()) require "public/partials/loggedheader.php";
+else require "public/partials/header.php";
 ?>
 
 <div class="bg-particles" id="particles-js"></div>

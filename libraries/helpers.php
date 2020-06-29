@@ -62,4 +62,9 @@ function array_sort($array, $on, $order=SORT_DESC)
 
     return $new_array;
 }
+
+// https://stackoverflow.com/a/20618256
+function in_array_r($item , $array){
+    return preg_match('/"'.preg_quote($item, '/').'"/i' , json_encode($array));
+}
 ?>
