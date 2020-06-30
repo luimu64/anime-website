@@ -5,38 +5,27 @@ require_once "database/models/downloads.php";
 function indexController() {
     $pdo = connectDB();
     $allinfo = getAllDownloadsInfo($pdo);
+    var_dump($_SESSION);
     require "views/frontpage.view.php";
 }
 
-function loggedController() {
+function adminIndexController() {
     $pdo = connectDB();
     $allinfo = getAllDownloadsInfo($pdo);
-    require "views/loggedfrontpage.view.php";
+    var_dump($_SESSION);
+    require "views/adminfrontpage.view.php";
 }
 
-
-
-function upvoteController() {
-    $pdo = connectDB();
-    $id = $_POST['id'];
-    addUpvote($pdo, $id);
-    $allinfo = getAllPostsInfo($pdo);
-    $sorted = array_sort($allinfo, "likes");
-    require "views/frontpage.view.php";
-}
-
-function postController() {
-    if (isset($_POST['writer'], $_POST['content'])) {
+function addDownloadController() {
+    if(isset($_POST['title'], $_POST['link'], $_POST['category'])){
+        $title = $_POST['title'];
+        $link = $_POST['link'];
+        $category = $_POST['category'];
         $pdo = connectDB();
-        try {
-            addPost($pdo, $_POST['writer'], $_POST['content']);
-            header("Location: /"); 
-        } catch (PDOException $e){
-            echo "Virhe tietokantaan tallennettaessa: " . $e->getMessage();
-        }
+        adddownload($pdo, $title, $link, $category);
+        header("Location: /");
     } else {
-        require "views/newpost.view.php";
+        require "views/adddownload.view.php";
     }
 }
-
 ?>

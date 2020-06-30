@@ -26,6 +26,10 @@ function isLoggedIn(){
     }
 }
 
+function isLuimu() {
+    if ($_SESSION['username'] == "luimu" && $_SESSION['id'] == "69") return true;
+}
+
 
 // https://www.php.net/manual/en/function.sort.php ensimmäisen käyttäjän posti hiukan muokattuna
 function array_sort($array, $on, $order=SORT_DESC)

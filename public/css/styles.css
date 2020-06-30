@@ -57,3 +57,12 @@ a {
 .movie-container {
     margin-top: 1em;
 }
+
+.custom-btn {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.hidden {
+    visibility: hidden;
+}

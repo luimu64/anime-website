@@ -6,20 +6,13 @@ function getAllDownloadsInfo($pdo) {
     return $all;
 }
 
-function addUpvote($pdo, $id) {
-    $data = [$id];
-    $sql = "UPDATE posts SET likes = likes + 1 WHERE id = ?";
-    $stm = $pdo->prepare($sql);
-    return ($stm->execute($data));
-}
-
-function addPost($pdo, $writer, $content) {
-    $writer = cleanUpInput($writer);
-    $content =  cleanUpInput($content);
-    $data = [$writer, $content];
-    $sql = "INSERT INTO posts (writer, content) VALUES(?,?)";
+function adddownload($pdo, $title, $link, $category) {
+    $cleantitle =  cleanUpInput($title);
+    $cleanlink = cleanUpInput($link);
+    $cleancategory = cleanUpInput($category);
+    $data = [$cleantitle, $cleanlink, $cleancategory];
+    $sql = "INSERT INTO downloads (title, link, category) VALUES(?,?,?)";
     $stm=$pdo->prepare($sql);
     return ($stm->execute($data));
-} 
-
+}
 ?>

@@ -1,6 +1,7 @@
 <?php
 $currentpage = "downloads";
-if(isLoggedIn()) require "public/partials/loggedheader.php";
+if(isLuimu()) require "public/partials/adminheader.php";
+else if(isLoggedIn()) require "public/partials/loggedheader.php";
 else require "public/partials/header.php";
 ?>
 
@@ -16,6 +17,11 @@ else require "public/partials/header.php";
   }
   function download(dlink) {
     window.open(dlink, "_self");
+  }
+
+  function unhide() {
+    if (document.getElementById("hidden-form").style.visibility == "hidden") alert("hidden");
+    else (document.getElementById("hidden-form").style.visibility == "visible") alert("visible");
   }
 </script>
 

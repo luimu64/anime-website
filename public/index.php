@@ -14,7 +14,7 @@ require_once 'controllers/mediacontroller.php';
 $router = new Router(new Request);
 
 $router->get('/', function($request) {
-  if(isLoggedIn()) loggedController();
+  if(isluimu()) adminIndexController();
   else indexcontroller();
 });
 
@@ -23,13 +23,43 @@ $router->get('/smal', function($request) {
   smalController();
 });
 
-
-$router->get('/media', function($request) {
-  mediaController();
-});
-
 $router->post('/smal', function($request) {
   adminController();
+});
+
+$router->get('/media', function($request) {
+  if (isLoggedIn()) mediaController();
+  else loginController();
+});
+
+$router->get('/add_smal', function($request) {
+  if (isLuimu()) addSmalController();
+  else indexController();
+});
+
+$router->post('/add_smal', function($request) {
+  if (isLuimu()) addSmalController();
+  else indexController();
+});
+
+$router->post('/add_download', function($request) {
+  if (isLuimu()) addDownloadController();
+  else indexController();
+});
+
+$router->get('/add_download', function($request) {
+  if (isLuimu()) addDownloadController();
+  else indexController();
+});
+
+$router->post('/add_media', function($request) {
+  if (isLuimu()) addMediaController();
+  else indexController();
+});
+
+$router->get('/add_media', function($request) {
+  if (isLuimu()) addMediaController();
+  else indexController();
 });
 
 $router->get('/login', function($request) {

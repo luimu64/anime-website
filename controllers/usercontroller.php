@@ -39,7 +39,7 @@ function registeringController() {
     }
 }
 
-function adminFrontController() {
+function frontAdminController() {
     if(isset($_POST['id'])){
         $pdo = connectDB();
         $id = $_POST['id'];

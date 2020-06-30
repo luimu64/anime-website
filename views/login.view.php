@@ -1,6 +1,7 @@
 <?php
 $currentpage = "login";
-if(isLoggedIn()) require "public/partials/loggedheader.php";
+if(isLuimu()) require "public/partials/adminheader.php";
+else if(isLoggedIn()) require "public/partials/loggedheader.php";
 else require "public/partials/header.php";
 ?>
 <div class="bg-particles" id="particles-js"></div>
